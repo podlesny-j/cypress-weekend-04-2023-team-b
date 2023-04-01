@@ -1,6 +1,5 @@
 # Cypress Weekend Brno
 
-
 Pripravili sme pre vás tento štartovací projekt, aby sme pre každý tím nastavili určitý štandard
 pri odovzdaní svojho riešenia. V projekte sú nainštalované balíčky [Eslint](https://eslint.org/)
 a [Prettier](https://prettier.io/) spolu s config súbormi.
