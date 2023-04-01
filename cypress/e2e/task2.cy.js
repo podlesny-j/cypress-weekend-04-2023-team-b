@@ -42,17 +42,16 @@ describe('task 2', () => {
       .filter('[hreflang]')
       .as('hrefLangs')
       .then($hrefLangs => {
-        $hrefLangs.each(function (index, element) {
-          langValue = element.attributes.hreflang.value
+        $hrefLangs.each(function () {
+          langValue = this.attributes.hreflang.value
 
           hrefLangsArray.push(langValue)
-          console.log(langValue)
-          console.log(hrefLangsArray)
         })
         cy.wrap(hrefLangsArray).as('hrefLangsArray')
       })
     cy.fixture('hrefLangsFlightsLondonIstanbul.json').as('fixtureHrefLangsArray')
 
+    cy.step('Verify current hreflangs against save fixture')
     cy.then(function () {
       expect(this.fixtureHrefLangsArray).to.deep.equal(this.hrefLangsArray)
     })

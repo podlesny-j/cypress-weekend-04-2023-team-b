@@ -11,8 +11,8 @@ describe('Refresh hreflangs', () => {
       .filter('[hreflang]')
       .as('hrefLangs')
       .then($hrefLangs => {
-        $hrefLangs.each(function (index, element) {
-          langValue = element.attributes.hreflang.value
+        $hrefLangs.each(function () {
+          langValue = this.attributes.hreflang.value
 
           hrefLangsArray.push(langValue)
           console.log(langValue)
