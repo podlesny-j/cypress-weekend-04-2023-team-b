@@ -1,8 +1,5 @@
-describe('task 2 part 1', () => {
-  // beforeEach(() => {
-  // })
-
-  it('check the language is not supported on the visited site', () => {
+describe('task 2', () => {
+  it('check the language is not supported on the visited site and is changed accordingly after redirect', () => {
     const originalTargetPath = '/mx/cheap-flights/london-united-kingdom/istanbul-turkey/'
     const regex = /\/([a-z]{2})\//
 
@@ -29,11 +26,11 @@ describe('task 2 part 1', () => {
     })
   })
 
-  it.only('try to visit without redirect', () => {
+  it('task 2 part 2', () => {
     let langValue
     let hrefLangsArray = []
 
-    cy.visit('/mx/cheap-flights/london-united-kingdom/istanbul-turkey/')
+    cy.visit('/es/cheap-flights/london-united-kingdom/istanbul-turkey/')
     cy.get('head link')
       .filter('[hreflang]')
       .as('hrefLangs')
@@ -49,8 +46,9 @@ describe('task 2 part 1', () => {
         return hrefLangsArray
       })
       .then(hrefLangsArray => {
-        cy.wrap(hrefLangsArray).as('hrefLangsArray')
-        cy.log(hrefLangsArray)
+        cy.fixture('hrefLangsFlightsLondonIstanbul.json').then(function (fixtureHrefLangsArray) {
+          expect(fixtureHrefLangsArray).to.eq(this.hrefLangsArray)
+        })
       })
   })
 })
