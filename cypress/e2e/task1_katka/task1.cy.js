@@ -1,5 +1,7 @@
+
+
 describe('Overenie stranky', () => {
-  before('', () => {
+  beforeEach('', () => {
     cy.visit('/en/country/china/?botview=1')
   })
 
@@ -19,5 +21,21 @@ describe('Overenie stranky', () => {
     cy.get('head link[rel=canonical]')
       .should('have.attr', 'href')
       .and('eq', 'https://www.kiwi.com/en/country/china/')
-  })
+
+
+    })
+  it('uloha jeden cast za h1',()=>{
+        cy.log('overenie navbaru') 
+        cy.get('[data-test="NavBar"]').should('be.visible')
+
+        cy.log('overenie loadera')
+        cy.get('[type="pageLoader"]').should('be.visible')
+
+        cy.log('overenie neexistencie search buttonu na botview')
+        cy.get('[data-test="LandingSearchButton"]').should('not.exist')
+
+
+    
+        })      
+    
 })
