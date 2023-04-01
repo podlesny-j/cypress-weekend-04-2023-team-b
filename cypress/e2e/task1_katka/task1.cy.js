@@ -11,6 +11,8 @@ it('Overenie headera', () =>{
     cy.log('overenie meta description')
     cy.get('head meta[name=description]').should('have.attr','content').and('eq','Find the cheapest flights to China. Compare different airlines, choose the best price, and book your cheap plane ticket to China.')
     
+    cy.log('overenie canonical')
+    cy.get('head link[rel=canonical]')
 
 })
 })
